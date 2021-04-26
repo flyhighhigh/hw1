@@ -7,3 +7,7 @@ void radixsort(){
         //radix_int(0,data_cnt-1);
     return;
 }
+
+void radix_int(int a,int b){
+    return;
+}
