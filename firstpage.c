@@ -85,6 +85,13 @@ void start(){
     printf("mergesort = %f sec\n",timediff/1000000.0);
     output("merge");
     
+    read_data();
+    gettimeofday(&start, NULL);
+        radixsort();
+    gettimeofday(&end, NULL);
+    timediff = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
+    printf("radixsort = %f sec\n",timediff/1000000.0);
+    output("radix");
 }
 
 void read_data(){
@@ -109,7 +116,7 @@ void read_data(){
     }
     fclose(fp);
 }
-void output(char* sort){
+void output(const char* sort){
     printf("outputing data...\n");
 
     FILE* fp;
