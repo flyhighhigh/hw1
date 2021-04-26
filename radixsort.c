@@ -1,11 +1,8 @@
 void radixsort(){
     
-    if(option==STR)
-        radix_str();
+    if(option==STR)radix_str();
+    else radix_int();
     
-    else
-        radix_int();
-    return;
 }
 
 void radix_int(){
