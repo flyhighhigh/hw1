@@ -45,8 +45,7 @@ void quick_int(int start, int end){
 
 void quick_str(int start, int end){
     if(end > start + 1){
-        char middle[120];
-        strcpy(middle,data_str[start]);
+        char *middle=data_str[start];
         int left=start+1;
         int right=end;
 
