@@ -15,6 +15,8 @@ int option;
 char *data_str_const[data_cnt+5];
 char *data_str[data_cnt+5];
 char *temp_str[data_cnt+5];
+
+int data_int_const[data_cnt+5];
 int data_int[data_cnt+5];
 int temp_int[data_cnt+5];
 int radix_list_int[10][data_cnt];

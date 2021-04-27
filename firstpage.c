@@ -16,32 +16,23 @@ int firstpage(){
     printf("Your option -> ");
     scanf("%s",input);
 
-    if(*input=='s'){
-        option=STR;
-        start();
-    }
-    else if(*input=='i'){
-        option=INT;
-        start();
-    }
+    if(*input=='s'){ option=STR;start(); }
+    else if(*input=='i'){ option=INT;start(); }
     else if(*input=='e'||*input=='c')return 0;
-    else{
-        printf("Invalid input!\n");
-    }
+    else printf("Invalid input!\n");
     return 1;
 }
 
 void start(){
-
+    printf("generating data...\n");
     srand(time(NULL));
     
     FILE* fp;
-
+    
     if(option==INT){
         printf("[integers compare]\n");
         fp=fopen("dataset1.txt","w+t");
 
-        printf("generating data...\n");
         for(int i=0;i<data_cnt;i++){
             fprintf(fp,"%d\n",rand());
         }
@@ -50,7 +41,6 @@ void start(){
         printf("[strings compare]\n");
         fp=fopen("dataset2.txt","w+t");
 
-        printf("generating data...\n");
         for(int i=0;i<data_cnt;i++){
             for(int j=0;j<max_str;j++){
                 int r=rand()%52;
@@ -64,10 +54,8 @@ void start(){
     fclose(fp);
 
     
-
-
     struct  timeval start;
-    struct  timeval end;       
+    struct  timeval end;
     unsigned long timediff;
 
    
@@ -92,36 +80,31 @@ void read_data(){
     FILE* fp;
     if(option==INT){
         fp=fopen("dataset1.txt","rt");
-        /*
         int data;
         for(int i=0;i<data_cnt;i++){
             fscanf(fp,"%d",&data);
-            data_int[i] = data;
+            data_int_const[i] = data;
         }
-        */
     }
     else{
         fp=fopen("dataset2.txt","rt");
-        /*
         char data[120];
         for(int i=0;i<data_cnt;i++){
             fscanf(fp,"%s",data);
-            *(data_str+i) = strdup(data);
+            *(data_str_const+i) = strdup(data);
         }
-        */
-    }
-    char data[120];
-    for(int i=0;i<data_cnt;i++){
-        fscanf(fp,"%s",data);
-        *(data_str_const+i) = strdup(data);
     }
     fclose(fp);
     
 }
 
 void reset(){
-    for(int i=0;i<data_cnt;i++)
-        data_str[i]=data_str_const[i];
+    if(option==STR)
+        for(int i=0;i<data_cnt;i++)
+            data_str[i]=data_str_const[i];
+    else
+        for(int i=0;i<data_cnt;i++)
+            data_int[i]=data_int_const[i];
     printf("reset finished!\n");
 }
 
@@ -155,8 +138,9 @@ void output(const char* sort){
     printf("output [%ssort] data finished!!\n",sort);
 }
 void free_data(){
-    printf("free...\n");
-    if(option==STR)
+    if(option==STR){
         for(int i=0;i<data_cnt;i++)
             free(*(data_str_const+i));
+        printf("free...\n");
+    }   
 }
