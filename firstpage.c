@@ -8,12 +8,12 @@ int firstpage(){
     char input[100];
 
     printf("-------------\n");
-    printf("what do you want to do?\n");
+    printf("What do you want to do?\n");
 
     printf("(s) sort string\n");
     printf("(i) sort int\n");
     printf("(e) exit\n");
-    printf("your option -> ");
+    printf("Your option -> ");
     scanf("%s",input);
 
     if(*input=='s'){
@@ -24,15 +24,15 @@ int firstpage(){
         option=INT;
         start();
     }
-    else if(*input=='e')return 0;
+    else if(*input=='e'||*input=='c')return 0;
     else{
-        printf("invalid input!\n");
+        printf("Invalid input!\n");
     }
     return 1;
 }
 
 void start(){
-/*
+
     srand(time(NULL));
     
     FILE* fp;
@@ -62,7 +62,7 @@ void start(){
     }
     printf("finish generate!\n");
     fclose(fp);
-*/
+
     
 
 

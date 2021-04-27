@@ -42,7 +42,7 @@ void quick_int(int start, int end){
 
 void quick_str(int start, int end){
     if(start<end){
-        char* mid=data_int[start];
+        char* mid=data_str[start];
         int left=start;
         int right=end;
 

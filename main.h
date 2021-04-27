@@ -5,7 +5,7 @@
 #include<string.h>
 #include<ctype.h>
 
-#define data_cnt 10
+#define data_cnt 1000000
 #define max_str 100
 #define INT 1
 #define STR 2
