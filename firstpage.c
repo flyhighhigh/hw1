@@ -32,7 +32,7 @@ int firstpage(){
 }
 
 void start(){
-
+/*
     srand(time(NULL));
     
     FILE* fp;
@@ -62,7 +62,7 @@ void start(){
     }
     printf("finish generate!\n");
     fclose(fp);
-    
+*/
     
 
 
