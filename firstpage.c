@@ -70,55 +70,62 @@ void start(){
     struct  timeval end;       
     unsigned long timediff;
 
+   
     read_data();
-    gettimeofday(&start, NULL);
-        quicksort();
-    gettimeofday(&end, NULL);
-    timediff = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
-    printf("quicksort = %f sec\n",timediff/1000000.0);
-    output("quick");
+    for(int i=0;i<sort_cnt;i++){
+        reset();
+        printf("-------------\n");
+        gettimeofday(&start, NULL);
+            functions[i]();
+        gettimeofday(&end, NULL);
+        timediff = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
+        printf("%ssort = %f sec\n",sortname[i],timediff/1000000.0);
+        output(sortname[i]);
+    }
+    free_data();
 
-    read_data();
-    gettimeofday(&start, NULL);
-        mergesort();
-    gettimeofday(&end, NULL);
-    timediff = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
-    printf("mergesort = %f sec\n",timediff/1000000.0);
-    output("merge");
-    
-    read_data();
-    gettimeofday(&start, NULL);
-        radixsort();
-    gettimeofday(&end, NULL);
-    timediff = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
-    printf("radixsort = %f sec\n",timediff/1000000.0);
-    output("radix");
 }
 
 void read_data(){
     printf("reading data...\n");
+
     FILE* fp;
     if(option==INT){
         fp=fopen("dataset1.txt","rt");
+        /*
         int data;
         for(int i=0;i<data_cnt;i++){
             fscanf(fp,"%d",&data);
             data_int[i] = data;
         }
+        */
     }
     else{
         fp=fopen("dataset2.txt","rt");
+        /*
         char data[120];
         for(int i=0;i<data_cnt;i++){
             fscanf(fp,"%s",data);
             *(data_str+i) = strdup(data);
         }
+        */
+    }
+    char data[120];
+    for(int i=0;i<data_cnt;i++){
+        fscanf(fp,"%s",data);
+        *(data_str_const+i) = strdup(data);
     }
     fclose(fp);
-    printf("read finished!\n");
+    
 }
+
+void reset(){
+    for(int i=0;i<data_cnt;i++)
+        data_str[i]=data_str_const[i];
+    printf("reset finished!\n");
+}
+
 void output(const char* sort){
-    printf("outputing [%ssort] data...\n",sort);
 
     FILE* fp;
     char *filename=(char*)calloc(100,sizeof(char));
@@ -132,7 +139,6 @@ void output(const char* sort){
         for(int i=0;i<data_cnt;i++){
             fprintf(fp,"%s\n",*(data_str+i));
         }
-        free_data();
     }
     else{
         strcat(filename,"output_int_");
@@ -145,10 +151,12 @@ void output(const char* sort){
     }
     fclose(fp);
     free(filename);
-    printf("output finished!\n");
 
+    printf("output [%ssort] data finished!!\n",sort);
 }
 void free_data(){
-    for(int i=0;i<data_cnt;i++)
-        free(*(data_str+i));
+    printf("free...\n");
+    if(option==STR)
+        for(int i=0;i<data_cnt;i++)
+            free(*(data_str_const+i));
 }
