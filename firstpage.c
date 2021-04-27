@@ -63,6 +63,7 @@ void start(){
     printf("finish generate!\n");
     fclose(fp);
     
+    
 
 
     struct  timeval start;
@@ -96,7 +97,6 @@ void start(){
 
 void read_data(){
     printf("reading data...\n");
-
     FILE* fp;
     if(option==INT){
         fp=fopen("dataset1.txt","rt");
