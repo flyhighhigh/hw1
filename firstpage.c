@@ -115,9 +115,10 @@ void read_data(){
         }
     }
     fclose(fp);
+    printf("read finished!\n");
 }
 void output(const char* sort){
-    printf("outputing data...\n");
+    printf("outputing [%ssort] data...\n",sort);
 
     FILE* fp;
     char *filename=(char*)calloc(100,sizeof(char));
@@ -144,6 +145,8 @@ void output(const char* sort){
     }
     fclose(fp);
     free(filename);
+    printf("output finished!\n");
+
 }
 void free_data(){
     for(int i=0;i<data_cnt;i++)
