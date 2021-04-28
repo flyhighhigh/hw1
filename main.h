@@ -8,7 +8,7 @@
 
 #define data_cnt 1000000
 #define max_str 100
-#define sort_cnt 4
+#define sort_cnt 3
 #define INT 1
 #define STR 2
 
@@ -60,8 +60,8 @@ void radixsort();
 void radix_int();
 void radix_str();
 
-char sortname[sort_cnt][20]={"quick","merge","radix","quicksort_part"};
+char sortname[sort_cnt][20]={"quick","merge","radix"};
 typedef void (*Fptr)();
-Fptr functions[sort_cnt]={quicksort,mergesort,radixsort,quicksort_part};
+Fptr functions[sort_cnt]={quicksort,mergesort,radixsort};
 
 pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
