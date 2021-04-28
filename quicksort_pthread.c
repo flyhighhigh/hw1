@@ -28,10 +28,12 @@ void *quick_int_p(void* input){
     int end=((int*)input)[1];
 
     if(start<end){
+        pthread_mutex_lock(&mutex);
         int mid=data_int[start];
         int left=start;
         int right=end;
 
+        
         while (left < right){
             while(data_int[left]<=mid && left<end)
                 left++;
@@ -42,6 +44,7 @@ void *quick_int_p(void* input){
             }
         }
         swap_int(&data_int[start],&data_int[right]);
+        
 
         int input1[2]={start,right-1};
         int input2[2]={right+1,end};
@@ -50,7 +53,8 @@ void *quick_int_p(void* input){
         pthread_attr_t attr;
         pthread_attr_init(&attr);
         pthread_attr_setdetachstate(&attr ,PTHREAD_CREATE_DETACHED);
-
+        
+        pthread_mutex_unlock(&mutex);
         pthread_create(&t1, &attr ,quick_int_p,(void*)input1);
         quick_int_p((void*)input2);
         
