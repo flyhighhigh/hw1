@@ -49,6 +49,10 @@ void quick_pthread();
 void *quick_int_p(void*);
 void *quick_str_p(void*);
 
+void quicksort_improve();
+void insert(int,int);
+void quick_int_improve();
+void threenumber(int,int);
 //merge
 void mergesort();
 void rec_merge_int(int left,int right);
@@ -60,8 +64,8 @@ void radixsort();
 void radix_int();
 void radix_str();
 
-char sortname[sort_cnt][20]={"quick","merge","radix","p_quick"};
+char sortname[sort_cnt][20]={"quick","merge","radix","quicksort_improve"};
 typedef void (*Fptr)();
-Fptr functions[sort_cnt]={quicksort,mergesort,radixsort,quick_pthread};
+Fptr functions[sort_cnt]={quicksort,mergesort,radixsort,quicksort_improve};
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;

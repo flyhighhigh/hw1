@@ -3,6 +3,7 @@
 #include "mergesort.c"
 #include "radixsort.c"
 #include "quicksort_pthread.c"
+#include "quicksort_improve.c"
 
 int firstpage(){
 

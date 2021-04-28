@@ -7,8 +7,10 @@ dataset2.txt
 output_str_merge.txt
 output_str_quick.txt
 output_str_p_quick.txt
+output_str_quicksort_improve.txt
 output_str_radix.txt
 output_int_merge.txt
 output_int_quick.txt
 output_int_p_quick.txt
+output_int_quicksort_improve.txt
 output_int_radix.txt
