@@ -20,11 +20,10 @@ typedef struct{
 int option;
 char *data_str_const[data_cnt+5];
 char *data_str[data_cnt+5];
-char *temp_str[data_cnt+5];
 
 int data_int_const[data_cnt+5];
 int data_int[data_cnt+5];
-int temp_int[data_cnt+5];
+
 int radix_list_int[10][data_cnt];
 char *radix_list_str[52][data_cnt];
 
@@ -55,10 +54,13 @@ void quick_int_improve();
 void threenumber(int,int);
 //merge
 void mergesort();
-void rec_merge_int(int left,int right);
-void mergearray_int(int a,int a_end,int b,int b_end);
-void rec_merge_str(int left,int right);
-void mergearray_str(int a,int a_end,int b,int b_end);
+void rec_merge_int(int left,int right,int*);
+void mergearray_int(int a,int a_end,int b,int b_end,int*);
+void rec_merge_str(int left,int right,char**);
+void mergearray_str(int a,int a_end,int b,int b_end,char**);
+
+//char *temp_str[data_cnt+5];
+//int temp_int[data_cnt+5];
 //radix
 void radixsort();
 void radix_int();

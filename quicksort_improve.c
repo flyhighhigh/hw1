@@ -8,7 +8,7 @@ void quicksort_improve(){
 
 void quick_int_improve(int start, int end){
 
-    if(start+5<end){
+    if(start+10<end){
         threenumber(start,end);//此時start是 start middle end 之中位數
         int mid=data_int[start];
         int left=start;
