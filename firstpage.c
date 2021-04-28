@@ -2,6 +2,7 @@
 #include "quicksort.c"
 #include "mergesort.c"
 #include "radixsort.c"
+#include "quicksort_pthread.c"
 
 int firstpage(){
 
