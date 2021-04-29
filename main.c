@@ -3,7 +3,6 @@
 
 int main(int argc, char **argv) {
 
-
     printf("# Welcome to sorting wizard #\n");
 
     while (firstpage());
