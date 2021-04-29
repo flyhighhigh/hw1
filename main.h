@@ -11,6 +11,8 @@
 #define sort_cnt 5
 #define INT 1
 #define STR 2
+#define thread 12
+#define number_per_thread data_cnt/thread
 
 typedef struct{
     int i;
@@ -45,14 +47,12 @@ void quick_int(int,int);
 void quick_str(int,int);
 
 void quick_pthread();
-void *quick_int_p(void*);
-void *quick_str_p(void*);
 void *work(void*);
-void create_thread(int start,int end);
+void merger_p(int*);
 
 void quicksort_improve();
 void insert(int,int);
-void quick_int_improve();
+void quick_int_improve(int,int);
 void threenumber(int,int);
 //merge
 void mergesort();
