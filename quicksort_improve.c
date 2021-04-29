@@ -8,7 +8,11 @@ void quicksort_improve(){
 
 void quick_int_improve(int start, int end){
 
-    if(start+10<end){
+    if(start+10>end){
+        insert(start,end);
+        return;
+    }
+    
         threenumber(start,end);//此時start是 start middle end 之中位數
         int mid=data_int[start];
         int left=start;
@@ -25,9 +29,7 @@ void quick_int_improve(int start, int end){
         swap_int(&data_int[start],&data_int[right]);
         quick_int(start,right-1);
         quick_int(right+1,end);
-    }
-    else insert(start,end);
-    return;
+
 }
 /*
 void quick_str(int start, int end){
@@ -53,7 +55,7 @@ void quick_str(int start, int end){
 */
 void insert(int start,int end){
 	int i,j;
-	for(i=start;i<=end;i++){
+	for(i=start+1;i<=end;i++){
 		int key=data_int[i];
 
 		for(j=i-1;data_int[j]>key&&j>=0;j--){

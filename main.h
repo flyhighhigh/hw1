@@ -8,7 +8,7 @@
 
 #define data_cnt 1000000
 #define max_str 100
-#define sort_cnt 4
+#define sort_cnt 5
 #define INT 1
 #define STR 2
 
@@ -47,6 +47,8 @@ void quick_str(int,int);
 void quick_pthread();
 void *quick_int_p(void*);
 void *quick_str_p(void*);
+void *work(void*);
+void create_thread(int start,int end);
 
 void quicksort_improve();
 void insert(int,int);
@@ -66,8 +68,9 @@ void radixsort();
 void radix_int();
 void radix_str();
 
-char sortname[sort_cnt][20]={"quick","merge","radix","quicksort_improve"};
+char sortname[sort_cnt][20]={"quick","merge","radix","quicksort_improve","p_quick"};
 typedef void (*Fptr)();
-Fptr functions[sort_cnt]={quicksort,mergesort,radixsort,quicksort_improve};
+Fptr functions[sort_cnt]={quicksort,mergesort,radixsort,quicksort_improve,quick_pthread};
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_barrier_t barrier;
