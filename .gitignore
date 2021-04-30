@@ -1,24 +1,7 @@
-12-1.c
 a
 gdb
 main
-dataset1.txt
-dataset2.txt
 
-output_str_quick.txt
-output_str_quick_p.txt
-output_str_quick_imp.txt
-output_str_merge.txt
-output_str_radix.txt
-
-output_int_quick.txt
-output_int_quick_p.txt
-output_int_quick_imp.txt
-output_int_merge.txt
-output_int_radix.txt
-
-quicksort.o
-mergesort.o
-radixsort.o
-quicksort_pthread.o
-quicksort_improve.o
+#ignore all .o .txt file
+*.o
+*.txt

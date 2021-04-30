@@ -7,7 +7,7 @@
 #include<time.h>
 #include<string.h>
 #include<ctype.h>
-#include <pthread.h>
+#include<pthread.h>
 
 #define data_cnt 1000000
 #define max_str 100
