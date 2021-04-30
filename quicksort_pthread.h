@@ -3,6 +3,7 @@
 
 void quick_pthread();
 void *work(void*);
-void merger_p(int*);
+void merger_int(int*);
+void merger_str(char**);
 
 #endif
