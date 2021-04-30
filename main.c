@@ -45,7 +45,7 @@ int firstpage(){
 void start(){
     printf("generating data...\n");
     srand(time(NULL));
-    
+
     FILE* fp;
     
     if(option==INT){
@@ -70,6 +70,7 @@ void start(){
         }
     }
     printf("finish generate!\n");
+    
     fclose(fp);
 
     
@@ -97,20 +98,20 @@ void read_data(){
     printf("reading data...\n");
 
     FILE* fp;
+    if(option==STR){
+        fp=fopen("dataset2.txt","rt");
+        char data[120];
+        for(int i=0;i<data_cnt;i++){
+            fscanf(fp,"%s",data);
+            *(data_str_const+i) = strdup(data);
+        }
+    }
     if(option==INT){
         fp=fopen("dataset1.txt","rt");
         int data;
         for(int i=0;i<data_cnt;i++){
             fscanf(fp,"%d",&data);
             data_int_const[i] = data;
-        }
-    }
-    if(option==INT){
-        fp=fopen("dataset2.txt","rt");
-        char data[120];
-        for(int i=0;i<data_cnt;i++){
-            fscanf(fp,"%s",data);
-            *(data_str_const+i) = strdup(data);
         }
     }
     fclose(fp);

@@ -13,6 +13,16 @@ void swap_int(int *a,int *b){
     *b=temp;
 }
 
+void swap_idx(int a,int b){
+    if(option==STR)swap_str(&data_str[a],&data_str[b]);
+    if(option==INT)swap_int(&data_int[a],&data_int[b]);
+}
+
+int cmp_idx(int a,int b){
+    if(option==STR)return strcmp(data_str[a],data_str[b]);
+    if(option==INT)return data_int[a]-data_int[b];
+}
+
 void quicksort(){
     if(option==STR)
         quick_str(0,data_cnt-1);
