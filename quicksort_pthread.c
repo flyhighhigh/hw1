@@ -26,7 +26,7 @@ void *work(void *arg) {
     int end = i!=thread-1 ? (i+1)*number_per_thread-1 : data_cnt-1;
     //printf("start end %d %d\n",start,end);
     if(option==STR)
-        quick_str(start, end);
+        quick_str_improve(start, end);
     else
         quick_int_improve(start,end);
     
@@ -38,7 +38,7 @@ void merger_p(int *temp){
     int index[thread];
     for (int i = 0; i < thread; i++) {
         index[i] = i * number_per_thread;
-        printf("idx %d\n",index[i]);
+        //printf("idx %d\n",index[i]);
     }
 
     for (int i = 0; i < data_cnt; i++) {
