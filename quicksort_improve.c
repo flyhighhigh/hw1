@@ -1,3 +1,7 @@
+#include "main.h"
+#include "quicksort.h"
+#include "quicksort_improve.h"
+
 void quicksort_improve(){
     if(option==STR)
         quick_str(0,data_cnt-1);
@@ -31,28 +35,7 @@ void quick_int_improve(int start, int end){
         quick_int(right+1,end);
 
 }
-/*
-void quick_str(int start, int end){
-    if(start<end){
-        char* mid=data_str[start];
-        int left=start;
-        int right=end;
 
-        while (left < right){
-            while(strcmp(data_str[left],mid)<=0 && left<end)
-                left++;
-            while(strcmp(data_str[right],mid)>0)
-                right--;
-            if(left<right)
-                swap_str(&data_str[left],&data_str[right]);
-        }
-        swap_str(&data_str[start],&data_str[right]);
-        quick_str(start,right-1);
-        quick_str(right+1,end);
-    }
-    return;
-}
-*/
 void insert(int start,int end){
 	int i,j;
 	for(i=start+1;i<=end;i++){

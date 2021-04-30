@@ -1,3 +1,6 @@
+#include "main.h"
+#include "radixsort.h"
+
 void radixsort(){
     
     if(option==STR)radix_str();

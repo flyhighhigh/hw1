@@ -1,3 +1,6 @@
+#include "main.h"
+#include "mergesort.h"
+
 void mergesort(){
     
     if(option==STR){
