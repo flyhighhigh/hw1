@@ -31,7 +31,6 @@ char *radix_list_str[52][data_cnt];
 int firstpage();
 void start();
 void generate();
-void read_data();
 void free_data();
 void output(const char*);
 void reset();

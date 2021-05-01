@@ -74,10 +74,10 @@ void generate(){
     if(option==INT){
         printf("INT data generating ...\n");
         fp=fopen("dataset1.txt","w+t");
-        int temp;
+        if(fp==NULL){ printf("Failed to open [dataset1.txt]!!\n"); return; }
 
         for(int i=0;i<data_cnt;i++){
-            temp=rand();
+            int temp=rand();
             fprintf(fp,"%d\n",temp);
             data_int_const[i]=temp;
         }
@@ -86,6 +86,8 @@ void generate(){
     else{
         printf("STR data generating ...\n");
         fp=fopen("dataset2.txt","w+t");
+        if(fp==NULL){ printf("Failed to open [dataset2.txt]!!\n"); return; }
+
         char temp[max_str+5];
 
         for(int i=0;i<data_cnt;i++){
@@ -108,31 +110,6 @@ void generate(){
     
     fclose(fp);
 }
-/*
-void read_data(){
-    printf("reading data...\n");
-
-    FILE* fp;
-    if(option==STR){
-        fp=fopen("dataset2.txt","rt");
-        char data[120];
-        for(int i=0;i<data_cnt;i++){
-            fscanf(fp,"%s",data);
-            *(data_str_const+i) = strdup(data);
-        }
-    }
-    if(option==INT){
-        fp=fopen("dataset1.txt","rt");
-        int data;
-        for(int i=0;i<data_cnt;i++){
-            fscanf(fp,"%d",&data);
-            data_int_const[i] = data;
-        }
-    }
-    fclose(fp);
-    
-}
-*/
 void reset(){
     if(option==STR)
         for(int i=0;i<data_cnt;i++)
@@ -154,6 +131,8 @@ void output(const char* sort){
         strcat(filename,sort);
         strcat(filename,".txt");
         fp=fopen(filename,"w+t");
+        if(fp==NULL){ printf("Failed to open [%s]!!\n",filename); return; }
+
         for(int i=0;i<data_cnt;i++){
             fprintf(fp,"%s\n",*(data_str+i));
         }
@@ -163,6 +142,8 @@ void output(const char* sort){
         strcat(filename,sort);
         strcat(filename,".txt");
         fp=fopen(filename,"w+t");
+        if(fp==NULL){ printf("Failed to open [%s]!!\n",filename); return; }
+
         for(int i=0;i<data_cnt;i++){
             fprintf(fp,"%d\n",data_int[i]);
         }
@@ -189,34 +170,34 @@ void custom(int opt,int times){
 
     for(int k=0;k<times;k++){
         printf("--------------------\n");
-        printf("the ( %d / %d ) test\n",k+1,times);
+        printf("test ( %d / %d )\n",k+1,times);
         
         generate();
-        //read_data();
         for(int i=0;i<sort_cnt;i++){
             reset();
-            
+
             gettimeofday(&start, NULL);
-                functions[i]();
+            functions[i]();
             gettimeofday(&end, NULL);
-            timediff[i] += 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
-            //printf("performance of [%s] = %f sec\n",sortname[i],timediff[i]/1000000.0);
+            
+            timediff[i]+=1000000*(end.tv_sec-start.tv_sec)+end.tv_usec-start.tv_usec;
         }
         free_data();
     }
-    printf("output performance result...\n");
+    printf("--------------------\n");
+    printf("outputing performance result...\n");
     FILE* fp;
     
-    if(option==INT)fp=fopen("performance_INT.txt","w+t");
-    if(option==STR)fp=fopen("performance_STR.txt","w+t");
+    if(option==INT)fp=fopen("performance_int.txt","w+t");
+    if(option==STR)fp=fopen("performance_str.txt","w+t");
+    if(fp==NULL){ printf("Failed to open [performance.txt]!!\n"); return; }
 
     for(int i=0;i<sort_cnt;i++){
-        fprintf(fp,"[%s]\tsum = %f sec, avg = %f sec\n",\
+        fprintf(fp,"[ %-10s ] sum = %11f sec,  avg = %9f sec\n",\
         sortname[i],timediff[i]/1000000.0,timediff[i]/100000000.0);
-        printf("[%s]\tsum = %f sec, avg = %f sec\n",\
+        printf("[ %-10s ] sum = %11f sec,  avg = %9f sec\n",\
         sortname[i],timediff[i]/1000000.0,timediff[i]/100000000.0);
     }
     
     fclose(fp);
-    
 }
