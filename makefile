@@ -1,6 +1,6 @@
 all:main.c quicksort.o mergesort.o radixsort.o quicksort_pthread.o quicksort_improve.o
 	gcc main.c quicksort.o mergesort.o radixsort.o quicksort_pthread.o quicksort_improve.o -o main -pthread -g -Wall
-#	./main
+	./main
 quicksort.o:quicksort.c quicksort.h main.h
 	gcc -c quicksort.c
 
